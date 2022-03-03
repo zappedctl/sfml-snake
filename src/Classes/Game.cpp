@@ -5,7 +5,7 @@
 void Game::initWindow()
 {
   this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "SFML");
-  this->window->setFramerateLimit(4);
+  this->window->setFramerateLimit(60);
 }
 
 void Game::initFoods()

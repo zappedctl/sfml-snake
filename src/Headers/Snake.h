@@ -9,6 +9,13 @@ class Snake
   private:
     std::vector<sf::Vector2f> body;
     sf::Vector2f direction;
+    int speed;
+
+    // Move Clock
+    sf::Clock moveClock;
+
+    // Initializers
+    void initBody();
 
   public:
     // Constructor and Destructor
