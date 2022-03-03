@@ -27,23 +27,23 @@ Snake::~Snake()
 
 void Snake::updateDirection()
 {
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) && (this->direction.y != 1 || this->body.size() == 1))
   {
     this->direction.y = -1;
     this->direction.x = 0;
   }
-  else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
+  else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) && (this->direction.y != -1 || this->body.size() == 1))
   {
     this->direction.y = 1;
     this->direction.x = 0;
   }
 
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left) && (this->direction.x != 1 || this->body.size() == 1))
   {
     this->direction.x = -1;
     this->direction.y = 0;
   }
-  else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+  else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right) && (this->direction.x != -1 || this->body.size() == 1))
   {
     this->direction.x = 1;
     this->direction.y = 0;
@@ -54,11 +54,16 @@ void Snake::update()
 {
   this->updateDirection();
   if (this->moveClock.getElapsedTime().asSeconds() > 1.f / this->speed) {
-    for (int i = 0; i < this->body.size(); i++)
+    if (this->body.size() > 1)
     {
-      this->body[i].x += this->direction.x;
-      this->body[i].y += this->direction.y;
+      this->body.push_back(sf::Vector2f(this->body[this->body.size() - 1] + this->direction));
+      this->body.pop_front();
     }
+    else
+    {
+      this->body[0] += this->direction;
+    }
+
     this->moveClock.restart();
   }
 }

@@ -7,7 +7,7 @@
 class Snake
 {
   private:
-    std::vector<sf::Vector2f> body;
+    std::deque<sf::Vector2f> body;
     sf::Vector2f direction;
     int speed;
 
