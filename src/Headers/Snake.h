@@ -25,6 +25,7 @@ class Snake
 
     // Accessors
     const sf::Vector2f getHead() const;
+    const std::deque<sf::Vector2f> getBody() const;
 
     // Update Functions
     void updateDirection();

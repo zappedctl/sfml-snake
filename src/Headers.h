@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <deque>
+#include <random>
 #include <iostream>
 
 #endif // HEADERS_H

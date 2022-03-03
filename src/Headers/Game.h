@@ -35,6 +35,7 @@ class Game
     void render();
 
     // Functions
+    void spawnFood();
     void run();
 };
 

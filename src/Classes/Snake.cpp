@@ -30,6 +30,11 @@ const sf::Vector2f Snake::getHead() const
   return this->body[this->body.size() - 1];
 }
 
+const std::deque<sf::Vector2f> Snake::getBody() const
+{
+  return this->body;
+}
+
 // Update Functions
 
 void Snake::updateDirection()

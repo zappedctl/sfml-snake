@@ -53,6 +53,7 @@ void Game::updateSnake()
     {
       snake.grow();
       this->foods.pop_back();
+      this->spawnFood();
     }
   }
 }
@@ -87,6 +88,24 @@ void Game::render()
 }
 
 // Functions
+
+void Game::spawnFood()
+{
+  int newFoodX = 0; 
+  int newFoodY = 0;
+
+  bool isInside = true;
+  while (isInside)
+  {
+    newFoodX = rand() % 800 / TILE_SIZE;
+    newFoodY = rand() % 600 / TILE_SIZE;
+
+    for (sf::Vector2f part : this->snake.getBody())
+      isInside = newFoodX == part.x && newFoodY == part.y ? true : false;
+  }
+
+  this->foods.push_back(Food(newFoodX, newFoodY));
+}
 
 void Game::run()
 {
