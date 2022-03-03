@@ -7,11 +7,17 @@ void Game::initWindow()
   this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "SFML");
 }
 
+void Game::initFoods()
+{
+  this->foods.push_back(Food());
+}
+
 // Constructor and Destructor
 
 Game::Game()
 {
   this->initWindow();
+  this->initFoods();
 }
 
 Game::~Game()
@@ -44,9 +50,18 @@ void Game::update()
 
 // Render Functions
 
+void Game::renderFoods()
+{
+  for (int i = 0; i < this->foods.size(); i++)
+  {
+    this->foods[i].render(*this->window);
+  }
+}
+
 void Game::render()
 {
   this->window->clear();
+  this->renderFoods();
   this->window->display();
 }
 

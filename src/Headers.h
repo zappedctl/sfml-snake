@@ -4,6 +4,7 @@
 // SFML
 #include <SFML/Graphics.hpp>
 
+#include <vector>
 #include <iostream>
 
 #endif // HEADERS_H

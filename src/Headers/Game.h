@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "../Headers.h"
+#include "Food.h"
 
 class Game
 {
@@ -9,8 +10,11 @@ class Game
     sf::RenderWindow* window;
     sf::Event sfEvent;
 
+    std::vector<Food> foods;
+
     // Initializers
     void initWindow();
+    void initFoods();
 
   public:
     // Constructor and Destructor
@@ -22,6 +26,7 @@ class Game
     void update();
 
     // Render Functions
+    void renderFoods();
     void render();
 
     // Functions
