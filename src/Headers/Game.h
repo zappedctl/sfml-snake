@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "../Headers.h"
+#include "../Constants.h"
 #include "Food.h"
 
 class Game

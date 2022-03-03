@@ -9,7 +9,7 @@ void Game::initWindow()
 
 void Game::initFoods()
 {
-  this->foods.push_back(Food());
+  this->foods.push_back(Food(TILE_SIZE, TILE_SIZE));
 }
 
 // Constructor and Destructor

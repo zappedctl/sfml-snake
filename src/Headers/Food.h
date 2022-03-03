@@ -6,6 +6,8 @@
 class Food
 {
   private:
+    float x;
+    float y;
     sf::RectangleShape shape;
 
     // Initializers
@@ -13,7 +15,7 @@ class Food
 
   public:
     // Constructor and Destructor
-    Food();
+    Food(const float x, const float y);
     virtual ~Food();
 
     // Functions
