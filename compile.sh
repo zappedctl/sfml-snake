@@ -6,7 +6,7 @@ then
   echo "Compiling..."
   mkdir -p build
   rm -f build/*
-  g++ -c src/Main.cpp src/Classes/*.cpp
+  g++ -c src/Main.cpp src/Classes/*.cpp --std=c++11
   g++ *.o -o build/$PROJECT_NAME -I src/Headers $LIBRARIES
   rm *.o
 elif [[ $1 == "comph" ]]

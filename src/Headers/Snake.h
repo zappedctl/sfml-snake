@@ -23,6 +23,9 @@ class Snake
     Snake();
     virtual ~Snake();
 
+    // Accessors
+    const sf::Vector2f getHead() const;
+
     // Update Functions
     void updateDirection();
     void update();

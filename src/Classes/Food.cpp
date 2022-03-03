@@ -5,7 +5,7 @@
 
 void Food::initShape()
 {
-  this->shape.setPosition(sf::Vector2f(this->x, this->y));
+  this->shape.setPosition(sf::Vector2f(this->x * TILE_SIZE, this->y * TILE_SIZE));
   this->shape.setSize(sf::Vector2f(TILE_SIZE, TILE_SIZE));
   this->shape.setFillColor(sf::Color::Red);
 }
@@ -23,6 +23,13 @@ Food::Food(const float x, const float y)
 Food::~Food()
 {
 
+}
+
+// Accessors
+
+const sf::Vector2f Food::getPos() const
+{
+  return sf::Vector2f(this->x, this->y);
 }
 
 // Functions

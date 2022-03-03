@@ -18,6 +18,9 @@ class Food
     Food(const float x, const float y);
     virtual ~Food();
 
+    // Accessors
+    const sf::Vector2f getPos() const;
+
     // Functions
     void render(sf::RenderTarget& target);
 };

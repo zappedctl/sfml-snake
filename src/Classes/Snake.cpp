@@ -23,6 +23,13 @@ Snake::~Snake()
 
 }
 
+// Accessors
+
+const sf::Vector2f Snake::getHead() const
+{
+  return this->body[this->body.size() - 1];
+}
+
 // Update Functions
 
 void Snake::updateDirection()

@@ -10,7 +10,7 @@ void Game::initWindow()
 
 void Game::initFoods()
 {
-  this->foods.push_back(Food(TILE_SIZE, TILE_SIZE));
+  this->foods.push_back(Food(1, 1));
 }
 
 // Constructor and Destructor
@@ -47,6 +47,14 @@ void Game::updateSFMLEvents()
 void Game::updateSnake()
 {
   this->snake.update();
+  for (Food food : this->foods)
+  {
+    if (this->snake.getHead() == food.getPos())
+    {
+      snake.grow();
+      this->foods.pop_back();
+    }
+  }
 }
 
 void Game::update()
