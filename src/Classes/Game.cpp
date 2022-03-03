@@ -19,11 +19,13 @@ Game::Game()
 {
   this->initWindow();
   this->initFoods();
+  this->grid = new Background(800, 600, "src/Assets/Textures/grid.png");
 }
 
 Game::~Game()
 {
   delete this->window;
+  delete this->grid;
 }
 
 // Update Functions
@@ -76,6 +78,11 @@ void Game::update()
 
 // Render Functions
 
+void Game::renderGrid()
+{
+  this->grid->render(*this->window);
+}
+
 void Game::renderSnake()
 {
   this->snake.render(*this->window);
@@ -92,6 +99,7 @@ void Game::renderFoods()
 void Game::render()
 {
   this->window->clear();
+  this->renderGrid();
   this->renderSnake();
   this->renderFoods();
   this->window->display();
