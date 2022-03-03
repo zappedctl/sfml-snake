@@ -4,8 +4,8 @@ LIBRARIES="-lsfml-graphics -lsfml-window -lsfml-system"
 if [[ $1 == "comp" ]]
 then
   rm -f build/*
-  g++ -c src/Main.cpp
-  g++ *.o -o build/$PROJECT_NAME $LIBRARIES
+  g++ -c src/Main.cpp src/Classes/*.cpp
+  g++ *.o -o build/$PROJECT_NAME -I src/Headers $LIBRARIES
   rm *.o
 elif [[ $1 == "comph" ]]
 then
