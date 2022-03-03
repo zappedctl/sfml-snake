@@ -3,6 +3,7 @@ LIBRARIES="-lsfml-graphics -lsfml-window -lsfml-system"
 
 if [[ $1 == "comp" ]]
 then
+  mkdir -p build
   rm -f build/*
   g++ -c src/Main.cpp src/Classes/*.cpp
   g++ *.o -o build/$PROJECT_NAME -I src/Headers $LIBRARIES
