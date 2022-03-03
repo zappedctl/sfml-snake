@@ -3,6 +3,7 @@ LIBRARIES="-lsfml-graphics -lsfml-window -lsfml-system"
 
 if [[ $1 == "comp" ]]
 then
+  echo "Compiling..."
   mkdir -p build
   rm -f build/*
   g++ -c src/Main.cpp src/Classes/*.cpp
@@ -10,6 +11,7 @@ then
   rm *.o
 elif [[ $1 == "comph" ]]
 then
+  echo "Compiling headers..."
   g++ --std=c++11 src/Headers.h
 elif [[ $1 == "cc" ]]
 then
@@ -42,13 +44,18 @@ then
   echo "{" >> src/Classes/${2^}.cpp
   echo "" >> src/Classes/${2^}.cpp
   echo "}" >> src/Classes/${2^}.cpp
+
+  echo "Successfuly created class ${2^}!"
 elif [[ $1 == "rc" ]]
 then
   rm src/Headers/${2^}.h
   rm src/Classes/${2^}.cpp
+
+  echo "Successfuly removed class ${2^}!"
 elif [[ $1 == "run" ]]
 then
+  echo "Launching ${PROJECT_NAME}..."
   ./build/$PROJECT_NAME
 else
-  echo "No option provided!"
+  echo "No valid option provided!"
 fi
