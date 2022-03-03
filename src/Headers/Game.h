@@ -26,6 +26,7 @@ class Game
 
     // Update Functions
     void updateSFMLEvents();
+    void updateSnake();
     void update();
 
     // Render Functions

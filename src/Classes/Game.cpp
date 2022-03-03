@@ -5,6 +5,7 @@
 void Game::initWindow()
 {
   this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "SFML");
+  this->window->setFramerateLimit(4);
 }
 
 void Game::initFoods()
@@ -43,9 +44,15 @@ void Game::updateSFMLEvents()
   }
 }
 
+void Game::updateSnake()
+{
+  this->snake.update();
+}
+
 void Game::update()
 {
   this->updateSFMLEvents();
+  this->updateSnake();
 }
 
 // Render Functions

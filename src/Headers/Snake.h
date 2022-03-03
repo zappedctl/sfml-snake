@@ -8,11 +8,16 @@ class Snake
 {
   private:
     std::vector<sf::Vector2f> body;
+    sf::Vector2f direction;
 
   public:
     // Constructor and Destructor
     Snake();
     virtual ~Snake();
+
+    // Update Functions
+    void updateDirection();
+    void update();
 
     // Functions
     void render(sf::RenderTarget& target);
