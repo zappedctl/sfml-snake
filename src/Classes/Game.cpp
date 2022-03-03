@@ -58,10 +58,20 @@ void Game::updateSnake()
   }
 }
 
+void Game::updateCollisions()
+{
+  // Checking for collision between the snake's head and the tail
+  for (int i = 0; i < this->snake.getBody().size() - 2; i++)
+  {
+    if (this->snake.getBody()[i] == this->snake.getHead()) this->window->close();
+  }
+}
+
 void Game::update()
 {
   this->updateSFMLEvents();
   this->updateSnake();
+  this->updateCollisions();
 }
 
 // Render Functions

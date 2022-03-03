@@ -71,6 +71,13 @@ void Snake::updateDirection()
 void Snake::update()
 {
   this->updateDirection();
+
+  // Snake Movement:
+  //
+  // 1. The head moves based on the current direction (sf::Vector2f)
+  // 2. The new position is pushed to the snake's body end
+  // 3. The first element from the snake's body (the tail) is removed
+
   if (this->moveClock.getElapsedTime().asSeconds() > 1.f / this->speed) {
     this->lastPart = this->body[0];
 
@@ -107,9 +114,9 @@ void Snake::render(sf::RenderTarget& target)
   sf::RectangleShape snakePart(sf::Vector2f(TILE_SIZE, TILE_SIZE));
   snakePart.setFillColor(sf::Color::Green);
 
-  for (int i = 0; i < this->body.size(); i++)
+  for (sf::Vector2f part : this->body)
   {
-    snakePart.setPosition(this->body[i] * TILE_SIZE);
+    snakePart.setPosition(part * TILE_SIZE);
     target.draw(snakePart);
   }
 }
