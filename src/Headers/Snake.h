@@ -10,6 +10,7 @@ class Snake
     std::deque<sf::Vector2f> body;
     sf::Vector2f direction;
     int speed;
+    sf::Vector2f lastPart;
 
     // Move Clock
     sf::Clock moveClock;
@@ -27,6 +28,7 @@ class Snake
     void update();
 
     // Functions
+    void grow();
     void render(sf::RenderTarget& target);
 };
 

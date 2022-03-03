@@ -23,7 +23,7 @@ Snake::~Snake()
 
 }
 
-// Functions
+// Update Functions
 
 void Snake::updateDirection()
 {
@@ -48,12 +48,20 @@ void Snake::updateDirection()
     this->direction.x = 1;
     this->direction.y = 0;
   }
+
+  // Testing Grow Functions
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::E))
+  {
+    this->grow();
+  }
 }
 
 void Snake::update()
 {
   this->updateDirection();
   if (this->moveClock.getElapsedTime().asSeconds() > 1.f / this->speed) {
+    this->lastPart = this->body[0];
+
     if (this->body.size() > 1)
     {
       this->body.push_back(sf::Vector2f(this->body[this->body.size() - 1] + this->direction));
@@ -73,6 +81,13 @@ void Snake::update()
 
     this->moveClock.restart();
   }
+}
+
+// Functions
+
+void Snake::grow()
+{
+  this->body.push_front(this->lastPart);
 }
 
 void Snake::render(sf::RenderTarget& target)
