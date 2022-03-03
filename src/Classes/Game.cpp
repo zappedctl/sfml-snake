@@ -50,6 +50,11 @@ void Game::update()
 
 // Render Functions
 
+void Game::renderSnake()
+{
+  this->snake.render(*this->window);
+}
+
 void Game::renderFoods()
 {
   for (int i = 0; i < this->foods.size(); i++)
@@ -61,6 +66,7 @@ void Game::renderFoods()
 void Game::render()
 {
   this->window->clear();
+  this->renderSnake();
   this->renderFoods();
   this->window->display();
 }

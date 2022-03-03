@@ -3,6 +3,7 @@
 
 #include "../Headers.h"
 #include "../Constants.h"
+#include "Snake.h"
 #include "Food.h"
 
 class Game
@@ -11,6 +12,7 @@ class Game
     sf::RenderWindow* window;
     sf::Event sfEvent;
 
+    Snake snake;
     std::vector<Food> foods;
 
     // Initializers
@@ -27,6 +29,7 @@ class Game
     void update();
 
     // Render Functions
+    void renderSnake();
     void renderFoods();
     void render();
 
