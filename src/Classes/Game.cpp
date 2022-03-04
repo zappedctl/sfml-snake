@@ -131,17 +131,17 @@ void Game::spawnFood()
   int newFoodX = 0; 
   int newFoodY = 0;
 
-  bool isInside = true;
-  while (isInside)
+  bool isInside = false;
+  do
   {
     newFoodX = rand() % this->window->getSize().x / TILE_SIZE;
     newFoodY = rand() % this->window->getSize().y / TILE_SIZE;
 
+    srand(time(NULL));
+
     for (sf::Vector2f part : this->snake.getBody())
-    {
       isInside = newFoodX == part.x && newFoodY == part.y;
-    } 
-  }
+  } while (isInside);
 
   this->foods.push_back(Food(newFoodX, newFoodY));
 }

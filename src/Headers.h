@@ -5,7 +5,9 @@
 #include <SFML/Graphics.hpp>
 
 #include <deque>
-#include <random>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include <fstream>
 #include <iostream>
 
