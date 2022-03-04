@@ -38,7 +38,10 @@ Game::Game()
 {
   this->initWindow();
   this->initFoods();
-  this->grid = new Background(800, 600, "src/Assets/Textures/grid.png");
+  this->grid = new Background(this->window->getSize().x, this->window->getSize().y, "src/Assets/Textures/grid.png");
+
+  // Seeding RNG
+  srand(time(NULL));
 }
 
 Game::~Game()
@@ -130,18 +133,19 @@ void Game::spawnFood()
 {
   int newFoodX = 0; 
   int newFoodY = 0;
+  int insideCount = 0;
+  std::deque<sf::Vector2f> snakeBody = this->snake.getBody();
 
-  bool isInside = false;
   do
   {
     newFoodX = rand() % this->window->getSize().x / TILE_SIZE;
     newFoodY = rand() % this->window->getSize().y / TILE_SIZE;
 
-    srand(time(NULL));
-
-    for (sf::Vector2f part : this->snake.getBody())
-      isInside = newFoodX == part.x && newFoodY == part.y;
-  } while (isInside);
+    insideCount = 0;
+    for (sf::Vector2f part : snakeBody)
+      if (newFoodX == part.x && newFoodY == part.y)
+        insideCount++;
+  } while (insideCount > 0);
 
   this->foods.push_back(Food(newFoodX, newFoodY));
 }
