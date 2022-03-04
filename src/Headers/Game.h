@@ -12,6 +12,7 @@ class Game
   private:
     sf::RenderWindow* window;
     sf::Event sfEvent;
+    bool isPaused;
 
     Background* grid;
     Snake snake;
@@ -42,6 +43,7 @@ class Game
 
     // Functions
     void spawnFood();
+    void togglePaused();
     void run();
 };
 

@@ -39,6 +39,7 @@ Game::Game()
   this->initWindow();
   this->initFoods();
   this->grid = new Background(this->window->getSize().x, this->window->getSize().y, "src/Assets/Textures/grid.png");
+  this->isPaused = false;
 
   // Loading Pick-up Sound
   if (!this->pickupBuffer.loadFromFile("src/Assets/Sounds/pickup.wav"))
@@ -69,6 +70,19 @@ void Game::updateSFMLEvents()
       case sf::Event::Closed:
         this->window->close();
         break;
+
+      case sf::Event::KeyPressed:
+        switch (this->sfEvent.key.code)
+        {
+          case sf::Keyboard::Escape:
+            this->window->close();
+
+          case sf::Keyboard::Key::P:
+            this->togglePaused();
+
+          default:
+            break;
+        }
 
       default:
         break;
@@ -103,8 +117,11 @@ void Game::updateCollisions()
 void Game::update()
 {
   this->updateSFMLEvents();
-  this->updateSnake();
-  this->updateCollisions();
+  if (!this->isPaused)
+  {
+    this->updateSnake();
+    this->updateCollisions();
+  }
 }
 
 // Render Functions
@@ -157,6 +174,11 @@ void Game::spawnFood()
   } while (insideCount > 0);
 
   this->foods.push_back(Food(newFoodX, newFoodY));
+}
+
+void Game::togglePaused()
+{
+  this->isPaused = !this->isPaused;
 }
 
 void Game::run()

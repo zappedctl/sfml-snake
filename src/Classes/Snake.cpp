@@ -14,7 +14,7 @@ void Snake::initBody()
 Snake::Snake()
 {
   this->direction.x = 1;
-  this->speed = 8;
+  this->speed = 16;
   this->initBody();
 }
 
