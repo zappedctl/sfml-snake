@@ -6,6 +6,7 @@
 
 #include <deque>
 #include <random>
+#include <fstream>
 #include <iostream>
 
 #endif // HEADERS_H

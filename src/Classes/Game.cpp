@@ -4,13 +4,32 @@
 
 void Game::initWindow()
 {
-  this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "SFML");
-  this->window->setFramerateLimit(60);
+  std::ifstream windowConfig("src/Config/Window.ini");
+
+  std::string windowTitle = "SFML";
+  sf::VideoMode windowVideoMode(800, 600);
+  unsigned int windowFPSLimit = 60;
+  bool windowVSyncEnabled = false;
+
+  if (windowConfig.is_open())
+  {
+    std::getline(windowConfig, windowTitle); 
+    windowConfig >> windowVideoMode.width >> windowVideoMode.height;
+    windowConfig >> windowFPSLimit;
+    windowConfig >> windowVSyncEnabled;
+  }
+  else {
+    std::cout << "ERROR::GAME::CANT_OPEN_WINDOW_CONFIG_FILE" << std::endl;
+  }
+
+  this->window = new sf::RenderWindow(windowVideoMode, windowTitle);
+  this->window->setFramerateLimit(windowFPSLimit);
+  this->window->setVerticalSyncEnabled(windowVSyncEnabled);
 }
 
 void Game::initFoods()
 {
-  this->foods.push_back(Food(1, 1));
+  this->spawnFood();
 }
 
 // Constructor and Destructor
