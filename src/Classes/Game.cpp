@@ -40,6 +40,14 @@ Game::Game()
   this->initFoods();
   this->grid = new Background(this->window->getSize().x, this->window->getSize().y, "src/Assets/Textures/grid.png");
 
+  // Loading Pick-up Sound
+  if (!this->pickupBuffer.loadFromFile("src/Assets/Sounds/pickup.wav"))
+  {
+    std::cout << "ERROR::GAME::CANT_LOAD_PICKUP_AUDIO_FILE" << std::endl;
+  }
+
+  this->pickupSound.setBuffer(this->pickupBuffer);
+
   // Seeding RNG
   srand(time(NULL));
 }
@@ -76,6 +84,7 @@ void Game::updateSnake()
     if (this->snake.getHead() == food.getPos())
     {
       snake.grow();
+      this->pickupSound.play();
       this->foods.pop_back();
       this->spawnFood();
     }

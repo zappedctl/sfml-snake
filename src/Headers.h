@@ -3,6 +3,7 @@
 
 // SFML
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 #include <deque>
 #include <stdio.h>

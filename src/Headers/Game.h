@@ -16,6 +16,8 @@ class Game
     Background* grid;
     Snake snake;
     std::vector<Food> foods;
+    sf::SoundBuffer pickupBuffer;
+    sf::Sound pickupSound;
 
     // Initializers
     void initWindow();

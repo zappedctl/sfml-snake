@@ -1,5 +1,5 @@
 PROJECT_NAME="sfml-snake"
-LIBRARIES="-lsfml-graphics -lsfml-window -lsfml-system"
+LIBRARIES="-lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system"
 
 if [[ $1 == "comp" ]]
 then
