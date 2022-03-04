@@ -68,7 +68,7 @@ void Snake::updateDirection()
   }
 }
 
-void Snake::update()
+void Snake::update(sf::Vector2u windowSize)
 {
   this->updateDirection();
 
@@ -86,10 +86,15 @@ void Snake::update()
       this->body.push_back(sf::Vector2f(this->body[this->body.size() - 1] + this->direction));
 
       // Wrapping snake if it exits the window bounds
-      if (this->body[this->body.size() - 1].x > 800 / TILE_SIZE - 1) this->body[this->body.size() - 1].x = 0;
-      else if (this->body[this->body.size() - 1].x < 0) this->body[this->body.size() - 1].x = 800 / TILE_SIZE - 1;
-      if (this->body[this->body.size() - 1].y > 600 / TILE_SIZE - 1) this->body[this->body.size() - 1].y = 0;
-      else if (this->body[this->body.size() - 1].y < 0) this->body[this->body.size() - 1].y = 600 / TILE_SIZE - 1;
+      if (this->body[this->body.size() - 1].x > windowSize.x / TILE_SIZE - 1)
+        this->body[this->body.size() - 1].x = 0;
+      else if (this->body[this->body.size() - 1].x < 0)
+        this->body[this->body.size() - 1].x = windowSize.x / TILE_SIZE - 1;
+
+      if (this->body[this->body.size() - 1].y > windowSize.y / TILE_SIZE - 1)
+        this->body[this->body.size() - 1].y = 0;
+      else if (this->body[this->body.size() - 1].y < 0)
+        this->body[this->body.size() - 1].y = windowSize.y / TILE_SIZE - 1;
 
       this->body.pop_front();
     }

@@ -29,7 +29,7 @@ class Snake
 
     // Update Functions
     void updateDirection();
-    void update();
+    void update(sf::Vector2u windowSize);
 
     // Functions
     void grow();

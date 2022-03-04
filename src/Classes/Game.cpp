@@ -67,7 +67,7 @@ void Game::updateSFMLEvents()
 
 void Game::updateSnake()
 {
-  this->snake.update();
+  this->snake.update(this->window->getSize());
   for (Food food : this->foods)
   {
     if (this->snake.getHead() == food.getPos())
@@ -134,8 +134,8 @@ void Game::spawnFood()
   bool isInside = true;
   while (isInside)
   {
-    newFoodX = rand() % 800 / TILE_SIZE;
-    newFoodY = rand() % 600 / TILE_SIZE;
+    newFoodX = rand() % this->window->getSize().x / TILE_SIZE;
+    newFoodY = rand() % this->window->getSize().y / TILE_SIZE;
 
     for (sf::Vector2f part : this->snake.getBody())
     {
