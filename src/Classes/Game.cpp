@@ -119,7 +119,9 @@ void Game::spawnFood()
     newFoodY = rand() % 600 / TILE_SIZE;
 
     for (sf::Vector2f part : this->snake.getBody())
-      isInside = newFoodX == part.x && newFoodY == part.y ? true : false;
+    {
+      isInside = newFoodX == part.x && newFoodY == part.y;
+    } 
   }
 
   this->foods.push_back(Food(newFoodX, newFoodY));
